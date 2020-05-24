@@ -115,12 +115,15 @@ export class HomeComponent implements OnInit {
     this.apiService.updateUser(user, { "interruptions": user.interruptions });
   }
 
-  getRandomColor() {
+  getRandomColor(user) {
     let option = (Math.floor(Math.random() * 100)) % 6;
 
     if (this.last_color == COLORS.length) {
       this.last_color = 0;
     }
-    return COLORS[this.last_color++];
+    if (!user.color) {
+      user.color = COLORS[this.last_color++];
+    }
+    return user.color;
   }
 }

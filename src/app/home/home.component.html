@@ -13,7 +13,7 @@
     <form [formGroup]="form" novalidate autocomplete="off">
       <mat-grid-tile *ngFor="let user of users;let i = index" class="mat_grid_title">
 
-        <mat-card style="" [ngStyle]="{'background-color': getRandomColor()}" style="width: 100%;height: 100%;">
+        <mat-card [ngStyle]="{'background-color': getRandomColor(user)}" style="width: 100%;height: 100%;">
           <mat-card-header style="display: block;">
             <div class="row" style="display: inline;width: 100%;">
               <div style="float: left;">
