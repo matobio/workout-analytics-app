@@ -33,7 +33,6 @@
   margin-bottom: 2px;
 }
 
-div.user_top_filter div.mat-form-field-wrapper  div.mat-form-field-flex,
-div.user_top_filter .mat-form-field-flex {
+.user_top_filter::ng-deep div.mat-form-field-infix {
   background-color: white;
 }
