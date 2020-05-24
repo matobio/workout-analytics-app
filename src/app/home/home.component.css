@@ -1,0 +1,28 @@
+.mat_grid_title{
+    /* border:solid;
+    border-width: 2px;
+    border-color: black; */
+}
+
+.mat-card{
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .mat-card-header {
+    flex-shrink: 0;
+  }
+  
+  .mat-card-content{
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  .mat_form_field_task{
+      height: 45px;
+      padding-right: 10px;
+  }
+  
+  .mat_form_field_task .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0px;
+}

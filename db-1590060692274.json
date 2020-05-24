@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "re_abiertas": 1,
+      "name": "user 1"
+    },
+    {
+      "id": 2,
+      "re_abiertas": 20,
+      "name": "user 2"
+    }
+  ]
+}
