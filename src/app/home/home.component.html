@@ -1,7 +1,8 @@
 <div style="position: absolute;top: 10px;right: 10px;">
   <mat-form-field class="user_top_filter">
     <mat-label>Usuario</mat-label>
-    <input matInput placeholder="Usuario" value="" autocomplete="off">
+    <input #userFiltered matInput placeholder="Usuario" (input)="getUsersByName(userFiltered.value)" value=""
+      autocomplete="off">
   </mat-form-field>
 </div>
 

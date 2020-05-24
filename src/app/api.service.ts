@@ -25,6 +25,7 @@ export class ApiService {
     return this.firestore.collection(COLLECTION_NAME).valueChanges({ idField: 'id' });
   }
 
+
   updateUser(user: any, dataToUpdate: any) {
     return this.firestore
       .collection(COLLECTION_NAME)

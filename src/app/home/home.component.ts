@@ -45,6 +45,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getUsersByName(name: string) {
+    if (name == '') {
+      this.getData();
+    } else {
+      this.users = this.users.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
+    }
+  }
+
 
   getTareas(user: any) {
 
