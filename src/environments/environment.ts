@@ -1,11 +1,19 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+import { FIREBASE_CONFIG } from "src/environments/constantsKeys"
+
 
 export const environment = {
   production: false,
   firebaseConfig: {
-
+    apiKey: FIREBASE_CONFIG.apiKey,
+    authDomain: FIREBASE_CONFIG.authDomain,
+    databaseURL: FIREBASE_CONFIG.databaseURL,
+    projectId: FIREBASE_CONFIG.projectId,
+    storageBucket: FIREBASE_CONFIG.storageBucket,
+    messagingSenderId: FIREBASE_CONFIG.messagingSenderId,
+    appId: FIREBASE_CONFIG.appId
   }
 };
 

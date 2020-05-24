@@ -1,3 +1,5 @@
+import { FIREBASE_CONFIG } from "src/environments/constantsKeys"
+
 export const environment = {
     production: true,
     firebaseConfig: {

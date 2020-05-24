@@ -26,3 +26,14 @@
   .mat_form_field_task .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0px;
 }
+
+.mat_raised_button {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+div.user_top_filter div.mat-form-field-wrapper  div.mat-form-field-flex,
+div.user_top_filter .mat-form-field-flex {
+  background-color: white;
+}
