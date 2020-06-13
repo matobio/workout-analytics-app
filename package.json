@@ -4,11 +4,19 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href ”https://matobio.github.io/workout-analytics-app/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch ./server/db.json --port 30004"
+    "server": "json-server --watch ./server/db.json --port 30004",
+    "prod": "echo \"Add your build command here\"",
+    "postinstall": "node ./node_modules/husky/lib/installer/bin install",
+    "deploy": "git push origin `git subtree split --prefix dist master`:gh-pages --force"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prod"
+    }
   },
   "private": true,
   "dependencies": {
@@ -33,10 +41,11 @@
     "@angular-devkit/build-angular": "~0.901.6",
     "@angular/cli": "~9.1.6",
     "@angular/compiler-cli": "~9.1.7",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
