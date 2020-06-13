@@ -4,7 +4,7 @@ App URL: https://matobio.github.io/workout-analytics-app/
 
 ## The data
 
-This is an angular application which it get and write the data into a [Firebase Realtime Database[(https://firebase.google.com/).
+This is an angular application which it get and write the data into a [Firebase Realtime Database](https://firebase.google.com/).
 
 ## App deployment
 
@@ -19,9 +19,9 @@ The app is deployed with [GitHub Pages](https://pages.github.com/).
 1. Commit your angular proyect files to your master branch.
 2. Enable GitHub Pages on the repository.
    - Create the "gh-pages" branch, click on "Branch: master" and type gh-pages.
-   ![""](https://github.com/matobio/workout-analytics-app/edit/master/imagen1.PNG)
+   ![""](https://github.com/matobio/workout-analytics-app/blob/master/imagen1.PNG)
    - You will now have two branches in your repository: master and gh-pages. To enable GitHub Pages on your repository, click on "Settings" and scroll down the "GitHub Pages" section. You should see something like this:
-   ![""](https://github.com/matobio/workout-analytics-app/edit/master/imagen2.PNG)
+   ![""](https://github.com/matobio/workout-analytics-app/blob/master/imagen2.PNG)
 3. Install "husky":
 ```
 > npm install --save-dev husky 
