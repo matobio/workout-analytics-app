@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ",
+    "build-tomcat": "ng build --prod --base-href=/workout-analytics-app/",
+    "build-github": "ng build --prod --base-href=/workout-analytics-app/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
