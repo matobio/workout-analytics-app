@@ -13,7 +13,7 @@
     <form [formGroup]="form" novalidate autocomplete="off">
       <mat-grid-tile *ngFor="let user of users;let i = index" class="mat_grid_title">
 
-        <mat-card [ngStyle]="{'background-color': getRandomColor(user)}" style="width: 100%;height: 100%;">
+        <mat-card [ngStyle]="{'background-color': getRandomColor(user,i)}" style="width: 100%;height: 100%;">
           <mat-card-header style="display: block;">
             <div class="row" style="display: inline">
               <div style="float: left;">
@@ -42,17 +42,20 @@
                 </div>
               </div>
             </div>
+            <div style="padding: 5px;">
+              <mat-form-field #input_task appearance="outline" class="mat_form_field_task">
+                <mat-label>ID Tarea</mat-label>
+                <input matInput #taskIdToAdd type="text" value="" formControlName="taskIdToAdd"
+                  (keyup.enter)="addNewTask(user,taskIdToAdd.value)" />
+                <mat-icon matSuffix (click)="taskIdToAdd.value=''">clear</mat-icon>
+              </mat-form-field>
+              <!-- <button mat-raised-button type="submit" (click)="addNewTask(user)">Añadir</button> -->
+            </div>
           </mat-card-content>
 
           <!-- <mat-card-actions class="form-inline"> -->
-          <div style="padding: 5px;">
-            <mat-form-field appearance="outline" class="mat_form_field_task">
-              <mat-label>ID Tarea</mat-label>
-              <input matInput type="text" value="" formControlName="taskIdToAdd" />
-            </mat-form-field>
-            <button mat-raised-button type="submit" (click)="addNewTask(user)">Añadir</button>
-          </div>
-          <!-- </mat-card-actions> -->
+          <mat-card-actions>
+          </mat-card-actions>
         </mat-card>
 
       </mat-grid-tile>

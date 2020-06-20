@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, ElementRef } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { reduce, count } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { stringify } from 'querystring';
 import { keyframes } from '@angular/animations';
 import { MatGridList } from '@angular/material/grid-list';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MatFormField } from '@angular/material/form-field';
 
 
 const COLORS = ['rgb(226,0,60,0.6)',
@@ -22,6 +23,7 @@ const COLORS = ['rgb(226,0,60,0.6)',
 export class HomeComponent implements OnInit, AfterContentInit {
 
   @ViewChild('grid') grid: MatGridList;
+  @ViewChild('taskIdToAdd') inputTask: ElementRef
 
   gridByBreakpoint = {
     xl: 3,
@@ -55,7 +57,6 @@ export class HomeComponent implements OnInit, AfterContentInit {
   getData() {
 
     this.apiService.getUsers().subscribe((data: any[]) => {
-      console.log(data);
       this.users = data;
     });
   }
@@ -98,12 +99,16 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
 
 
-  addNewTask(user: any) {
+  addNewTask(user: any, value: any) {
 
-    let newTaskId = String(this.form.value.taskIdToAdd);
-    if (this.form.value.taskIdToAdd) {
+    let newTaskId = String(value);
+    if (value) {
       this.addTask(user, newTaskId);
     }
+    // this.taskIdToAdd.value = '';
+    // this.inputTask.nativeElement.value = '';
+    // this.form.value.taskIdToAdd = '';
+    // this.inputTask.nativeElement.value = '';
     this.form.reset();
   }
 
@@ -124,17 +129,25 @@ export class HomeComponent implements OnInit, AfterContentInit {
 
   addInterrupt(user: any) {
 
-    user.interruptions.push(new Date());
+    if (user.interruptions) {
+      user.interruptions.push(new Date());
+    }
+    else {
+      user['interruptions'] = [new Date()];
+    }
 
 
     this.apiService.updateUser(user, { "interruptions": user.interruptions });
   }
 
-  getRandomColor(user) {
-    let option = (Math.floor(Math.random() * 100)) % 6;
+  getRandomColor(user: any, index: number) {
 
-    if (this.last_color == COLORS.length) {
+    // let option = (Math.floor(Math.random() * 100)) % 6;
+    if (index == 0 || this.last_color == COLORS.length) {
       this.last_color = 0;
+    }
+    if (user.color) {
+      return user.color;
     }
     if (!user.color) {
       user.color = COLORS[this.last_color++];
