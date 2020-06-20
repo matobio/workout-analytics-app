@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { reduce, count } from 'rxjs/operators';
 import { stringify } from 'querystring';
 import { keyframes } from '@angular/animations';
+import { MatGridList } from '@angular/material/grid-list';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+
 
 const COLORS = ['rgb(226,0,60,0.6)',
   'rgb(30,200,255,0.6)',
@@ -16,15 +19,22 @@ const COLORS = ['rgb(226,0,60,0.6)',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterContentInit {
 
+  @ViewChild('grid') grid: MatGridList;
+
+  gridByBreakpoint = {
+    xl: 3,
+    lg: 3,
+    md: 3,
+    sm: 2,
+    xs: 1
+  }
   form: FormGroup
-
   users: any;
-
   last_color = 0;
 
-  constructor(private apiService: ApiService, private fb: FormBuilder) { }
+  constructor(private apiService: ApiService, private fb: FormBuilder, private observableMedia: MediaObserver) { }
 
   ngOnInit() {
     this.getData();
@@ -35,9 +45,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getData() {
+  ngAfterContentInit() {
+    this.observableMedia.media$.subscribe((change: MediaChange) => {
+      this.grid.cols = this.gridByBreakpoint[change.mqAlias];
+    });
 
-    // this.users = this.apiService.getUsers();
+  }
+
+  getData() {
 
     this.apiService.getUsers().subscribe((data: any[]) => {
       console.log(data);

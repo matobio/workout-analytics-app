@@ -23,6 +23,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "src/environments/environment";
 import { ApiService } from './api.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ApiService } from './api.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
